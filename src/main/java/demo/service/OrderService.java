@@ -26,4 +26,10 @@ public class OrderService {
         order.setPriceWithTex(priceWithTex);
         emailService.sendEmail(order);
     }
+
+    boolean placeOrder(Order order, String cc) {
+        double priceWithTex = order.getPrice() * 20 / 100;
+        order.setPriceWithTex(priceWithTex);
+        return emailService.sendEmail(order, cc);
+    }
 }

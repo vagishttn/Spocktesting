@@ -22,4 +22,9 @@ public class EmailService {
         // implementation goes here
         throw new RuntimeException();
     }
+
+    boolean sendEmail(Order order, String cc) {
+        // implementation goes here
+        return true;
+    }
 }
