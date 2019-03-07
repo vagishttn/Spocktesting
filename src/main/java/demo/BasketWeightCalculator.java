@@ -11,6 +11,7 @@ public class BasketWeightCalculator {
         totalWeight = totalWeight + itemWeight;
     }
 
+
     public int getTotalWeight() {
         return totalWeight;
     }

@@ -5,6 +5,7 @@ package demo.domain;
  */
 public class Order {
 
+
     private int quantity;
     private String itemName;
     private double price;

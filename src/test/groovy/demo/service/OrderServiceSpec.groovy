@@ -6,17 +6,18 @@ import spock.lang.Unroll
 
 class OrderServiceSpec extends Specification {
 
-    def "Testing PlaceOrder() mocking example"() {
-        given: "Create order instance"
-        Order order = new Order()
+    def "Testing Place Order Method"() {
+
+        given: "Create Order and OrderService Instance"
+        Order order = new Order();
         OrderService orderService = OrderService.getInstance()
 
-        and: "Initializing order"
-        order.setItemName("Product Name")
-                .setQuantity(2)
-                .setPrice(2400)
+        and: "Initialize Order"
+        order.setItemName("Pencil")
+                .setQuantity(10)
+                .setPrice(10)
 
-        and: "mocking EmailService"
+        and: "Mocking Object"
         EmailService emailService = Mock(EmailService)
         orderService.emailService = emailService
 
@@ -25,36 +26,44 @@ class OrderServiceSpec extends Specification {
 
         then:
         1 * emailService.sendEmail(order)
-        order.getPriceWithTex() == 480d
+        order.getPriceWithTex() == 21
+
     }
 
-    @Unroll("Testing PlaceOrder() stubing example: #sno")
-    def "Testing PlaceOrder() stubing example"() {
-        given: "Create order instance"
+    @Unroll("testing Using Stubing: #sno")
+    def "Testing Place Order Boolean Return"() {
+
+        given: "Create Order and OrderService Instance"
         Order order = new Order()
         OrderService orderService = OrderService.getInstance()
-        String cc = "dhanendrakumarkht@gmail.com"
+        String cc = "dixit.vagish@gmail.com"
 
-        and: "Initializing order"
-        order.setItemName("Product Name")
-                .setQuantity(2)
-                .setPrice(2400)
+        and: "Initialize Order"
+        order.setItemName("Pencil")
+                .setQuantity(10)
+                .setPrice(10)
 
-        and: "mocking EmailService"
+        and: "Mocking Objects"
         EmailService emailService = Mock(EmailService)
         orderService.emailService = emailService
 
         when:
-        boolean status = orderService.placeOrder(order, cc)
+        boolean status = emailService.sendEmail(order, cc)
 
         then:
-        1 * emailService.sendEmail(order, cc) >> inputStatus
-        order.getPriceWithTex() == 480d
-        status == expectedStatus
+        1 * emailService.sendEmail(order, cc) >> inputStats
+        order.getPriceWithTex() == 0
+        status == expectedResult
+
 
         where:
-        sno | inputStatus | expectedStatus
-        1   | true        | true
-        2   | false       | false
+
+        sno | inputStats | expectedResult
+        1   | true       | true
+        2   | false      | false
+
+
     }
+
+
 }

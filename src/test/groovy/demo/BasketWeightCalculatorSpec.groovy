@@ -15,6 +15,7 @@ class BasketWeightCalculatorSpec extends Specification {
         weightCalculator.getTotalWeight() == 5
     }
 
+
     def "two-items"() {
         given:
         def weightCalculator = new BasketWeightCalculator()

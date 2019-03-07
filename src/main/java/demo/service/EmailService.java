@@ -7,6 +7,7 @@ import demo.domain.Order;
  */
 public class EmailService {
 
+
     private static EmailService instance;
 
     public EmailService() {}

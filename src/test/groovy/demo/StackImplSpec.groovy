@@ -103,4 +103,5 @@ class StackImplSpec extends Specification {
 //        thrown(Exception)
         thrown(MissingMethodException)
     }
+
 }
